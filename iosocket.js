@@ -19,11 +19,11 @@ app.listen(8080, () => {
 
 
 app.post('/echo',function(req,res){
-
-    console.log('request =' + JSON.stringify(req.body))
-    console.log(req.body);
-    var rssi = req.body.rssi;
-    console.log(rssi);
+    console.log(JSON.stringify(req.body));
+    //console.log('request =' + JSON.stringify(req.body))
+    //console.log(req.body);
+    //var rssi = req.body.rssi;
+    //console.log(rssi);
     //var user_name=req.body.user;
     //var password=req.body.password;
     //res.send(req.body);
