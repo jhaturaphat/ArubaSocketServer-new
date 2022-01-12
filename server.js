@@ -56,7 +56,7 @@ async function beacon(report){
     c += 1;
     console.log(c);
     console.log(k.beacons);
-}
+  }
 }
 
 function add_sensors(location, sensor){
