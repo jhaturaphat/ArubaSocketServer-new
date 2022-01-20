@@ -16,3 +16,5 @@ Import file iot.sql to your mysql server
 add macaddress and name for filter devices
 
 Go to open Grafana the dashboard will displaying your IoT devices
+
+![image](https://user-images.githubusercontent.com/18340935/150284700-01b5e4f5-698e-4089-aa53-c336bffba305.png)
