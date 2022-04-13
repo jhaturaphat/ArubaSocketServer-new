@@ -88,7 +88,7 @@ function blelist(jsonline, data, inven) {
 }
 
 function insertDevice(sensorsvalue){
-  Axios.post('http://localhost:3001/websocketaos10/sensorvaluesinsert', {
+  Axios.post('http://localhost:3004/websocketaos10/sensorvaluesinsert', {
                   sensorsvalue: sensorsvalue
               }).then((reponse) => {
                   //setDevicelist(reponse.data);
@@ -98,7 +98,7 @@ function insertDevice(sensorsvalue){
 
 function cacheDevice() {
   console.log("CacheDevice Function Working",": WebSocket Data Sending");
-  Axios.get('http://localhost:3001/websocketaos10/inventory_device').then((response) => {
+  Axios.get('http://localhost:3004/websocketaos10/inventory_device').then((response) => {
     
       maccache = response.data;
       console.log(response.data,"response Data");
