@@ -58,7 +58,7 @@ function inventory_sensor(data){
 }
 
 function tracing_device(data){
-    db.query('INSERT INTO tracing_device (tdName,tdMac,tdLocation,tdRssi,tdMajor,tdMinor,tdTemp,tdBattery,tdTimestamp) VALUES (?,?,?,?,?,?,?,?,NOW())',
+    db.query('INSERT INTO tracing_device (tdName,tdMac,tdLocation,tdRssi,tdMajor,tdMinor,tdTemp,tdBattery,tdTimestamp) VALUES (?,?,?,?,?,?,ROUND(?,1),?,NOW())',
     [data['invenName'], data['self_mac'], data['nearby']['apmac'], data['nearby']['rssi'], data['values']['major'],
     data['values']['minor'],data['values']['temperature'],data['values']['battery']],
     (err,result) => {
