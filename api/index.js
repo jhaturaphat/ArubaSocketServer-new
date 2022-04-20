@@ -44,8 +44,8 @@ app.get('/websocketaos10/inventory_device', (req,res) =>{
 });
 
 function inventory_sensor(data){
-    db.query('UPDATE inventory_sensor SET `invenLocation`=?, `invenRssi`=?, `invenMajor`=?, `invenMinor`=?, `invenTemp`=ROUND(?,1), `invenBattery`=?, `invenTimestamp`=NOW()   WHERE invenMac = ?;', 
-    [data['nearby']['apmac'], data['nearby']['rssi'], 
+    db.query('UPDATE inventory_sensor SET `invenType`=?, `invenLocation`=?, `invenRssi`=?, `invenMajor`=?, `invenMinor`=?, `invenTemp`=ROUND(?,1), `invenBattery`=?, `invenTimestamp`=NOW()   WHERE invenMac = ?;', 
+    [data['values']['classify'],data['nearby']['apmac'], data['nearby']['rssi'], 
     data['values']['major'], data['values']['minor'], 
     data['values']['temperature'], data['values']['battery'], data['self_mac']],
     (err,result) =>{

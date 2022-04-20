@@ -38,6 +38,7 @@ wss.on('connection', function connection(ws) {
     //console.log("Data is appended to file successfully.")
     let temp = buf.toString();
     let obj = JSON.parse(temp);
+    //console.log(obj['body']['ble_raw_data']);
     //let myobj = JSON.stringify(temp);
     //let obj = JSON.parse(myobj);
     let line = Object.keys(obj['body']['telemetry']).length;
@@ -74,6 +75,7 @@ function blelist(jsonline, data, inven) {
               sensorsvalue['ap_list'] = aplist(Object.keys(data['body']['telemetry'][i]['meta_data']['reporters']).length, data['body']['telemetry'][i]['meta_data']['reporters']);
               //console.log(obj['body']['telemetry'][i]['meta_data']['device_classes']);
               //console.log(category(obj['body']['telemetry'][i]['meta_data']['device_classes'],obj['body']['telemetry'][i]));
+              //console.log(data['body']['telemetry'][i]);
               sensorsvalue['values'] = category(data['body']['telemetry'][i]['meta_data']['device_classes'], data['body']['telemetry'][i]);
               //console.log(i);
               sensorsvalue['timestamp'] = Date.now();
@@ -92,7 +94,7 @@ function insertDevice(sensorsvalue){
                   sensorsvalue: sensorsvalue
               }).then((reponse) => {
                   //setDevicelist(reponse.data);
-                  console.log(reponse.data);
+                  //console.log(reponse.data);
               });
 }
 
@@ -168,7 +170,10 @@ function category(classify, data) {
       ibeacon['minor'] = data['beacons'][0]['ibeacon']['ibeacon_minor'];
       ibeacon['classify'] = 'iBeacon';
       return ibeacon;
-  } else {
+  } else if(classify!=null){
+      unclassified['classify'] = classify;
+      return unclassified;
+  } else{
       unclassified['classify'] = 'unclassified';
       return unclassified;
   }
